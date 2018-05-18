@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration>
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+                <layout class="org.apache.log4j.PatternLayout">
+                     <param name="ConversionPattern" value="%d{ISO8601} %m%n"/>
+                </layout>
+                <filter class="org.apache.log4j.varia.LevelRangeFilter">
+                        <param name="LevelMin" value="INFO" />
+                </filter>
+	</appender>
+	
+	<appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="./log/run.log"/>
+       <param name="DatePattern" value="'.'yyyy-MM-dd"/>      
+        <param name="Append" value="true"/>
+                <layout class="org.apache.log4j.PatternLayout">
+                     <param name="ConversionPattern" value="%d{ISO8601} %m%n"/>
+                </layout>
+                <filter class="org.apache.log4j.varia.LevelRangeFilter">
+                        <param name="LevelMin" value="INFO" />
+                </filter>
+   	</appender>
+	
+	<root>
+	   <priority value="INFO"/>
+	   <appender-ref ref="STDOUT"/>	   
+	   <appender-ref ref="FILE"/>  	   	   
+	</root>
+</log4j:configuration>
